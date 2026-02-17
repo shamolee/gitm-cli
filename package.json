@@ -4,6 +4,17 @@
   "type": "module",
   "main": "./dist/index.js",
   "license": "MIT",
+  "keywords": [
+    "git",
+    "cli",
+    "git-manager",
+    "multiple-accounts",
+    "identity",
+    "ssh",
+    "pat",
+    "productivity",
+    "devops"
+  ],
   "files": [
     "dist"
   ],
