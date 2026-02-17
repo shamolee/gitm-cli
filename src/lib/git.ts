@@ -1,4 +1,5 @@
 import spawn from 'cross-spawn';
+import inquirer from 'inquirer';
 import { getConfig } from './config.js';
 import { Config, Account } from './types.js';
 
@@ -16,9 +17,25 @@ export async function invokeGit(args: string[]): Promise<void> {
         const profileEmail = activeProfile ? activeProfile.Email : "System Default";
 
         console.log(`\x1b[36m[gitm] Account: ${profileName} <${profileEmail}>\x1b[0m`);
-        // Note: Implementing interactive confirmation in git wrapper might be tricky if it's piping.
-        // Ideally, the CLI entry point handles this if it knows it's a git command.
-        // But since `gitm <args>` falls through to this, we should do it here.
+
+        try {
+            const answers = await inquirer.prompt([
+                {
+                    type: 'confirm',
+                    name: 'continue',
+                    message: `Allow execution of 'git ${args.join(' ')}'?`,
+                    default: true
+                }
+            ]);
+
+            if (!answers.continue) {
+                console.log('Aborted by user.');
+                process.exit(0);
+            }
+        } catch (error) {
+            console.error('Error during confirmation prompt:', error);
+            process.exit(1);
+        }
     }
 
     const env = { ...process.env };
