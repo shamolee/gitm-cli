@@ -19,9 +19,6 @@ export async function invokeGit(args: string[]): Promise<void> {
         // Note: Implementing interactive confirmation in git wrapper might be tricky if it's piping.
         // Ideally, the CLI entry point handles this if it knows it's a git command.
         // But since `gitm <args>` falls through to this, we should do it here.
-        // However, for simplicity in this step, I'll rely on the main catch-all to handle confirmation if needed, 
-        // or just print the info.
-        // Let's print info for now. Full confirmation requires 'inquirer' which is async.
     }
 
     const env = { ...process.env };

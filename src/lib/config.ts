@@ -11,6 +11,7 @@ export async function getConfig(): Promise<Config> {
     }
     try {
         const raw = await fs.readJson(configPath);
+
         // Ensure Settings exist (migration)
         if (!raw.Settings) {
             raw.Settings = { Confirmation: false };

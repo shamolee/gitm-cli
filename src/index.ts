@@ -36,7 +36,23 @@ program.command('settings')
     .description('Configure settings')
     .argument('[command]', 'confirmation | reset')
     .argument('[value]', 'on | off')
+    .argument('[value]', 'on | off')
     .action(settingsCommand);
+
+program.command('version')
+    .description('Show version')
+    .action(() => {
+        // Read version from package.json
+        // Since we are in dist/index.js, package.json is in ../package.json
+        // But for ESM we can use fs/promises
+        import('fs').then(async (fs) => {
+            try {
+                console.log(program.version());
+            } catch (e) {
+                console.error(e);
+            }
+        });
+    });
 
 // Catch-all for git commands
 program.allowUnknownOption(true);
