@@ -9,10 +9,18 @@ import { settingsCommand } from './commands/settings.js';
 
 const program = new Command();
 
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
+
 program
     .name('gitm')
     .description('Git Manager - Manage multiple Git identities')
-    .version('1.0.0');
+    .version(packageJson.version);
 
 program.command('acnt-add')
     .description('Register a new account')
