@@ -1,4 +1,4 @@
-# gitm-cli (TypeScript)
+# gitm-cli
 
 A cross-platform command-line tool to manage multiple Git accounts (identities) easily.
 

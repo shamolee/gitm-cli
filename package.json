@@ -2,6 +2,10 @@
   "name": "gitm-cli",
   "version": "1.0.0",
   "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "bin": {
     "gitm": "./dist/index.js"
   },
