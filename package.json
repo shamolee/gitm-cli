@@ -4,7 +4,17 @@
   "type": "module",
   "main": "./dist/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shamolee/gitm-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shamolee/gitm-cli/issues"
+  },
+  "homepage": "https://github.com/shamolee/gitm-cli#readme",
   "keywords": [
+    "gitm",
+    "gitm-cli",
     "git",
     "cli",
     "git-manager",
